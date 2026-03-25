@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do Zero à Leitura em 90 Dias – Área do Aluno</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --beige:    #FAF6EE;
+    --beige2:   #F2EBD9;
+    --beige3:   #E8DCC8;
+    --green:    #7B9E87;
+    --green2:   #5C8069;
+    --gold:     #C9A84C;
+    --gold2:    #A8873A;
+    --brown:    #3B2A1A;
+    --brown2:   #5C4033;
+    --muted:    #8B7355;
+    --rose:     #E8C4B0;
+    --white:    #FFFFFF;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--beige);
+    color: var(--brown);
+    min-height: 100vh;
+  }
+  .pf { font-family: 'Playfair Display', serif; }
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(160deg, var(--brown) 0%, var(--brown2) 100%);
+    padding: 56px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  header::after {
+    content: "";
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 60px;
+    background: var(--beige);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+  .owl {
+    font-size: 4.5rem;
+    display: block;
+    margin-bottom: 16px;
+    animation: owlBob 3s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+  }
+  @keyframes owlBob {
+    0%,100% { transform: translateY(0) rotate(-3deg); }
+    50%      { transform: translateY(-10px) rotate(3deg); }
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 900;
+    margin-bottom: 10px;
+    position: relative; z-index: 1;
+    line-height: 1.2;
+  }
+  header h1 span { color: var(--gold); }
+  header p {
+    color: rgba(255,255,255,.75);
+    font-size: 1rem;
+    position: relative; z-index: 1;
+  }
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50px;
+    padding: 8px 20px;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-top: 16px;
+    position: relative; z-index: 1;
+  }
+  /* ── MAIN ── */
+  main { max-width: 960px; margin: 0 auto; padding: 10px 20px 80px; }
+  /* ── SECTION TITLE ── */
+  .section-title {
+    display: flex; align-items: center; gap: 14px;
+    margin: 48px 0 20px;
+  }
+  .section-title .icon {
+    width: 46px; height: 46px;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(201,168,76,0.35);
+  }
+  .section-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: var(--brown);
+    font-weight: 700;
+  }
+  .section-title .line { flex: 1; height: 2px; background: var(--beige3); border-radius: 2px; }
+  /* ── CARDS ── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: var(--white);
+    border-radius: 22px;
+    padding: 26px;
+    box-shadow: 0 4px 20px rgba(59,42,26,0.08);
+    transition: transform .22s, box-shadow .22s;
+    text-decoration: none;
+    display: flex; flex-direction: column; gap: 10px;
+    border: 1.5px solid var(--beige3);
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(59,42,26,0.14);
+    border-color: var(--gold);
+  }
+  .card-emoji { font-size: 2.8rem; line-height: 1; }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--brown);
+    line-height: 1.3;
+  }
+  .card-desc {
+    font-size: .875rem;
+    color: var(--muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .card-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 22px; border-radius: 50px;
+    font-weight: 800; font-size: .875rem;
+    border: none; cursor: pointer; text-decoration: none;
+    transition: filter .2s, transform .2s;
+    font-family: 'Nunito', sans-serif;
+    align-self: flex-start;
+  }
+  .card-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  /* Badge */
+  .badge {
+    display: inline-block;
+    font-size: .7rem; padding: 4px 12px; border-radius: 20px;
+    font-weight: 800; align-self: flex-start;
+    letter-spacing: 0.5px;
+  }
+  /* ── COLOR VARIANTS ── */
+  .c-green   { border-top: 4px solid var(--green);  }
+  .c-gold    { border-top: 4px solid var(--gold);   }
+  .c-brown   { border-top: 4px solid var(--brown2); }
+  .c-rose    { border-top: 4px solid #D4907A;       }
+  .c-sage    { border-top: 4px solid #9EB5A3;       }
+  .c-olive   { border-top: 4px solid #A8A87A;       }
+  .bg-green  { background: var(--green);  color: white; }
+  .bg-gold   { background: var(--gold);   color: white; }
+  .bg-brown  { background: var(--brown2); color: white; }
+  .bg-rose   { background: #D4907A;       color: white; }
+  .bg-sage   { background: #7B9E87;       color: white; }
+  .bg-olive  { background: #8B8B5A;       color: white; }
+  .bg-app    { background: linear-gradient(135deg, var(--brown), var(--brown2)); color: white; }
+  .badge-green  { background: #EBF4EE; color: var(--green2); }
+  .badge-gold   { background: #FDF5E0; color: var(--gold2);  }
+  .badge-brown  { background: #F2EBE0; color: var(--brown2); }
+  .badge-rose   { background: #FCEEE8; color: #A0553A;       }
+  .badge-sage   { background: #EBF4EE; color: #4A7A5C;       }
+  .badge-olive  { background: #F2F2E0; color: #6B6B3A;       }
+  .badge-app    { background: #F0EBE0; color: var(--brown);  }
+  /* ── DESTACADO ── */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--brown), var(--brown2));
+    border-radius: 22px;
+    padding: 28px 32px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 28px rgba(59,42,26,0.25);
+  }
+  .highlight-box .hl-icon { font-size: 3.5rem; flex-shrink: 0; }
+  .highlight-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-bottom: 6px;
+  }
+  .highlight-box p { opacity: 0.8; font-size: 0.9rem; line-height: 1.6; }
+  .highlight-box .hl-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-decoration: none;
+    margin-top: 12px;
+    transition: all 0.2s;
+    font-family: 'Nunito', sans-serif;
+  }
+  .highlight-box .hl-btn:hover { background: var(--gold2); transform: translateY(-2px); }
+  /* ── AUDIO ── */
+  .audio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .audio-item {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 16px 18px;
+    display: flex; align-items: center; gap: 14px;
+    box-shadow: 0 2px 10px rgba(59,42,26,0.07);
+    border: 1.5px solid var(--beige3);
+    transition: border-color 0.2s;
+  }
+  .audio-item:hover { border-color: var(--gold); }
+  .audio-num {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: white;
+    border-radius: 50%;
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: .85rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(201,168,76,0.3);
+  }
+  .audio-info { flex: 1; min-width: 0; }
+  .audio-name {
+    font-size: .875rem; font-weight: 700; color: var(--brown);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    margin-bottom: 4px;
+  }
+  .audio-info audio { width: 100%; height: 28px; }
+  /* ── WELCOME BANNER ── */
+  .welcome-strip {
+    background: linear-gradient(135deg, var(--green), var(--green2));
+    border-radius: 18px;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: -20px 0 36px;
+    box-shadow: 0 4px 18px rgba(123,158,135,0.35);
+  }
+  .welcome-strip .ws-icon { font-size: 2rem; flex-shrink: 0; }
+  .welcome-strip p { color: white; font-weight: 700; font-size: 0.95rem; line-height: 1.5; }
+  .welcome-strip p span { opacity: 0.85; font-weight: 600; }
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 36px 20px;
+    color: var(--muted);
+    font-size: .875rem;
+    border-top: 2px solid var(--beige3);
+    margin-top: 20px;
+  }
+  footer .footer-owl { font-size: 2rem; display: block; margin-bottom: 8px; }
+  footer strong { color: var(--gold2); }
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .highlight-box { flex-direction: column; text-align: center; }
+    .welcome-strip { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<!-- HEADER -->
+<header>
+  <span class="owl">🦉</span>
+  <h1 class="pf">Do Zero à <span>Leitura</span><br>em 90 Dias</h1>
+  <p>Bem-vindo(a) à sua Área do Aluno!</p>
+  <div class="header-badge">🎉 Todos os seus materiais estão aqui</div>
+</header>
+<main>
+  <!-- WELCOME STRIP -->
+  <div class="welcome-strip">
+    <div class="ws-icon">✨</div>
+    <p>Parabéns pela sua compra! Aqui você encontra o guia principal, atividades interativas, vídeos, bônus e os 20 áudios educativos. <span>Tudo organizado para você começar hoje mesmo!</span></p>
+  </div>
+  <!-- PRODUTO PRINCIPAL -->
+  <div class="section-title">
+    <div class="icon">📚</div>
+    <h2>Produto Principal</h2>
+    <div class="line"></div>
+  </div>
+  <!-- App em destaque -->
+  <div class="highlight-box">
+    <div class="hl-icon">🦉</div>
+    <div>
+      <h3>App LittleStar — Leco IA</h3>
+      <p>Quiz gamificado, jogo de sílabas, histórias interativas e a coruja Leco com Inteligência Artificial para responder todas as dúvidas do seu filho em tempo real!</p>
+      <a class="hl-btn" href="https://littlestar-app.vercel.app" target="_blank">▶ Abrir App Agora</a>
+    </div>
+  </div>
+  <div class="cards">
+    <a class="card c-brown" href="guia-do-zero-a-leitura-90-dias.pdf" target="_blank">
+      <span class="card-emoji">📖</span>
+      <span class="badge badge-brown">Guia Principal</span>
+      <div class="card-title">Guia Do Zero à Leitura em 90 Dias</div>
+      <div class="card-desc">O método completo em 4 fases para ensinar seu filho a ler em 90 dias — com atividades diárias, dicas e estratégias comprovadas.</div>
+      <span class="card-btn bg-brown">📖 Abrir Guia</span>
+    </a>
+    <a class="card c-green" href="atividades-interativas.html" target="_blank">
+      <span class="card-emoji">🎮</span>
+      <span class="badge badge-green">App Interativo</span>
+      <div class="card-title">40 Atividades Interativas</div>
+      <div class="card-desc">Jogos educativos no navegador: sons, rimas, sílabas, palavras e fluência. Com barra de progresso e estrelas de conquista!</div>
+      <span class="card-btn bg-green">▶ Abrir App</span>
+    </a>
+    <a class="card c-gold" href="videos-animados.html" target="_blank">
+      <span class="card-emoji">🎬</span>
+      <span class="badge badge-gold">Com Narração</span>
+      <div class="card-title">12 Vídeos Animados</div>
+      <div class="card-desc">Apresentações animadas com narração em voz, confetti e progresso automático. Pressione 🔊 para ativar o áudio!</div>
+      <span class="card-btn bg-gold">▶ Ver Vídeos</span>
+    </a>
+  </div>
+  <!-- BÔNUS -->
+  <div class="section-title">
+    <div class="icon">🎁</div>
+    <h2>6 Bônus Exclusivos</h2>
+    <div class="line"></div>
+  </div>
+  <div class="cards">
+    <a class="card c-rose" href="bonus1-planilha-de-acompanhamento.pdf" target="_blank">
+      <span class="card-emoji">📊</span>
+      <span class="badge badge-rose">Bônus 1</span>
+      <div class="card-title">Planilha de Acompanhamento</div>
+      <div class="card-desc">Tabela de 13 semanas para registrar o progresso e celebrar cada conquista do seu filho.</div>
+      <span class="card-btn bg-rose">📥 Abrir PDF</span>
+    </a>
+    <a class="card c-sage" href="bonus2-cartoes-de-leitura.pdf" target="_blank">
+      <span class="card-emoji">🃏</span>
+      <span class="badge badge-sage">Bônus 2</span>
+      <div class="card-title">20 Fichas de Leitura</div>
+      <div class="card-desc">Cartões imprimíveis em 4 níveis de dificuldade para praticar leitura de palavras e frases.</div>
+      <span class="card-btn bg-sage">📥 Abrir PDF</span>
+    </a>
+    <a class="card c-brown" href="bonus3-guia-como-lidar-com-a-resistencia.pdf" target="_blank">
+      <span class="card-emoji">💪</span>
+      <span class="badge badge-brown">Bônus 3</span>
+      <div class="card-title">Guia: Lidando com a Resistência</div>
+      <div class="card-desc">5 cenários reais com estratégias práticas para quando a criança não quer estudar.</div>
+      <span class="card-btn bg-brown">📥 Abrir PDF</span>
+    </a>
+    <a class="card c-gold" href="bonus4-calendario-de-recompensas.pdf" target="_blank">
+      <span class="card-emoji">📅</span>
+      <span class="badge badge-gold">Bônus 4</span>
+      <div class="card-title">Calendário de Recompensas</div>
+      <div class="card-desc">Calendário de 90 dias com espaço para estrelinhas — mantém a criança motivada todo dia!</div>
+      <span class="card-btn bg-gold">📥 Abrir PDF</span>
+    </a>
+    <a class="card c-green" href="bonus5-certificados-mensais.pdf" target="_blank">
+      <span class="card-emoji">🏆</span>
+      <span class="badge badge-green">Bônus 5</span>
+      <div class="card-title">Certificados Mensais</div>
+      <div class="card-desc">3 certificados imprimíveis para celebrar cada mês completado com conquistas reais.</div>
+      <span class="card-btn bg-green">📥 Abrir PDF</span>
+    </a>
+    <a class="card c-olive" href="bonus-pack-6-bonus.pdf" target="_blank">
+      <span class="card-emoji">📦</span>
+      <span class="badge badge-olive">Pack Completo</span>
+      <div class="card-title">Todos os Bônus em 1 PDF</div>
+      <div class="card-desc">Todos os 6 bônus reunidos em um único arquivo para baixar e guardar.</div>
+      <span class="card-btn bg-olive">📥 Baixar Tudo</span>
+    </a>
+  </div>
+  <!-- ÁUDIOS -->
+  <div class="section-title">
+    <div class="icon">🎵</div>
+    <h2>20 Áudios Educativos</h2>
+    <div class="line"></div>
+  </div>
+  <div class="audio-grid" id="audio-grid"></div>
+</main>
+<footer>
+  <span class="footer-owl">🦉</span>
+  <p>Feito com ❤️ para o seu filho(a) aprender a ler</p>
+  <p style="margin-top:6px"><strong>Do Zero à Leitura em 90 Dias</strong></p>
+  <p style="margin-top:6px;font-size:0.8rem">Dúvidas? Entre em contato pelo Hotmart.</p>
+</footer>
+<script>
+const audios = [
+  { num:1,  name:"A Música dos Sons",               file:"audio-01-a-musica-dos-sons.mp3" },
+  { num:2,  name:"Batendo Palmas com Leco",          file:"audio-02-batendo-palmas-com-leco.mp3" },
+  { num:3,  name:"A História da Gotinha",            file:"audio-03-a-historia-da-gotinha.mp3" },
+  { num:4,  name:"Sons Iniciais",                    file:"audio-04-sons-iniciais.mp3" },
+  { num:5,  name:"Relaxamento dos Sons da Natureza", file:"audio-05-relaxamento-dos-sons-da-natureza.mp3" },
+  { num:6,  name:"ABC do Leco",                      file:"audio-06-abc-do-leco.mp3" },
+  { num:7,  name:"Vogais Especiais",                 file:"audio-07-vogais-especiais.mp3" },
+  { num:8,  name:"Conhecendo as Consoantes",         file:"audio-08-conhecendo-as-consoantes.mp3" },
+  { num:9,  name:"As Letrinhas que Foram ao Baile",  file:"audio-09-as-letrinhas-que-foram-ao-baile.mp3" },
+  { num:10, name:"Parabéns pela Fase Dois",          file:"audio-10-parabens-pela-fase-dois.mp3" },
+  { num:11, name:"Juntando Sílabas",                 file:"audio-11-juntando-silabas.mp3" },
+  { num:12, name:"Família BA-BE-BI-BO-BU",           file:"audio-12-familia-ba-be-bi-bo-bu.mp3" },
+  { num:13, name:"Trem das Famílias Silábicas",      file:"audio-13-trem-das-familias-silabicas.mp3" },
+  { num:14, name:"Forma Frases",                     file:"audio-14-forma-frases.mp3" },
+  { num:15, name:"Celebração da Fase Três",          file:"audio-15-celebracao-da-fase-tres.mp3" },
+  { num:16, name:"Lendo com Expressão",              file:"audio-16-lendo-com-expressao.mp3" },
+  { num:17, name:"O Livro que Ensinou a Sonhar",     file:"audio-17-o-livro-que-ensinou-a-sonhar.mp3" },
+  { num:18, name:"Leitura Cronometrada",             file:"audio-18-leitura-cronometrada.mp3" },
+  { num:19, name:"Compreensão Leitora",              file:"audio-19-compreensao-leitora.mp3" },
+  { num:20, name:"Parabéns – Você é um Leitor!",    file:"audio-20-parabens-voce-e-um-leitor.mp3" },
+];
+const grid = document.getElementById("audio-grid");
+audios.forEach(a => {
+  const item = document.createElement("div");
+  item.className = "audio-item";
+  item.innerHTML = `
+    <div class="audio-num">${a.num}</div>
+    <div class="audio-info">
+      <div class="audio-name">${a.name}</div>
+      <audio controls src="audios/${a.file}" preload="none"></audio>
+    </div>
+  `;
+  grid.appendChild(item);
+});
+</script>
+</body>
+</html>
