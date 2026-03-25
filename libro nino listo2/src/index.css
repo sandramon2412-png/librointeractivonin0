@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Fredoka", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-primary: #D4B483; /* Gold/Tan from button */
+  --color-brand-secondary: #C05A44; /* Terracotta from top banner */
+  --color-brand-bg: #F8F5F2; /* Soft Cream */
+  --color-brand-accent: #94A684; /* Muted Green from guarantee */
+  --color-brand-success: #6BCB77; /* Soft Green */
+  --color-brand-text: #3D3028; /* Dark Brown for headings */
+}
+
+body {
+  @apply bg-brand-bg text-brand-text font-sans antialiased overflow-x-hidden;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(192, 90, 68, 0.03) 0%, transparent 25%),
+    radial-gradient(circle at 90% 80%, rgba(148, 166, 132, 0.03) 0%, transparent 25%);
+}
+
+.card {
+  @apply bg-white rounded-[2.5rem] shadow-xl shadow-brand-text/5 border-4 border-white p-8 transition-all;
+}
+
+.card:hover {
+  @apply shadow-2xl shadow-brand-text/10 -translate-y-1.5;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+  @apply font-bold text-brand-text mb-6 font-serif;
+}
+
+.markdown-body p {
+  @apply mb-6 leading-relaxed text-lg text-brand-text/70;
+}
+
+.markdown-body table {
+  @apply w-full border-collapse mb-10 overflow-hidden rounded-[2.5rem] border-4 border-brand-primary/20 shadow-xl bg-white;
+}
+
+.markdown-body th {
+  @apply bg-brand-primary border-b-4 border-brand-primary/80 p-6 text-left font-bold text-sm uppercase tracking-widest text-white;
+}
+
+.markdown-body td {
+  @apply border-b border-brand-primary/10 p-6 text-lg text-brand-text/70 leading-relaxed font-medium;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+}
+
+.animate-float {
+  animation: float 6s infinite ease-in-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-brand-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-primary/30 rounded-full border-4 border-brand-bg;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-brand-primary/50;
+}
+
+@media print {
+  @page {
+    margin: 2cm;
+  }
+  
+  body {
+    background: white !important;
+    background-image: none !important;
+    color: black !important;
+  }
+
+  .print\:block {
+    display: block !important;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  .break-before-page {
+    break-before: page;
+  }
+
+  /* Hide all non-print elements */
+  nav, aside, button, .fixed, .md\:hidden {
+    display: none !important;
+  }
+
+  /* Ensure full width for print content */
+  .max-w-4xl {
+    max-w: none !important;
+    width: 100% !important;
+  }
+
+  /* Better typography for print */
+  h1, h2, h3, h4 {
+    color: black !important;
+    page-break-after: avoid;
+  }
+
+  p, li {
+    orphans: 3;
+    widows: 3;
+  }
+}
